@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Taimy - Task Timer</title>
+    <title>TaimY - Task Timer</title>
     <link rel="apple-touch-icon" href="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIyNCIgaGVpZ2h0PSIyNCIgdmlld0JveD0iMCAwIDI0IDI0IiBmaWxsPSJub25lIiBzdHJva2U9IiMzN2I5ZjMiIHN0cm9rZS13aWR0aD0iMi41IiBzdHJva2UtbGluZWNhcD0icm91bmQiIHN0cm9rZS1saW5lam9pbj0icm91bmQiIGNsYXNzPSJsdWNpZGUgbHVjaWRlLWxheW91dC10ZW1wbGF0ZSI+PHJlY3Qgd2lkdGg9IjE4IiBoZWlnaHQ9IjciIHg9IjMiIHk9IjMiIHJ4PSIxIi8+PHJlY3Qgd2lkdGg9IjkiIGhlaWdodD0iNyIgeD0iMyIgeT0iMTQiIHJ4PSIxIi8+PHJlY3Qgd2lkdGg9IjUiIGhlaWdodD0iNyIgeD0iMTYiIHk9IjE0Ii byeD0iMSIvPjwvc3ZnPg==">
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700&display=swap" rel="stylesheet">
@@ -41,9 +41,10 @@
 <body class="bg-slate-100 dark:bg-slate-900 text-slate-800 dark:text-slate-200 font-sans">
     <div class="flex h-screen">
         <!-- Sidebar -->
+         
         <aside class="w-64 bg-white dark:bg-slate-800 shadow-md">
             <div class="p-4">
-                <h1 class="text-2xl font-bold text-sky-600 dark:text-sky-400">Taimy</h1>
+                <h1 class="text-xl font-bold text-sky-600 dark:text-sky-400"><i data-lucide="chart-gantt" stroke-width="2.8" class="w-5 h-5 mb-1 mr-1 inline-block"></i>TaimY</h1>
             </div>
             <nav class="mt-8">
                 <a href="index.html" class="flex items-center px-4 py-2 text-sm text-slate-700 dark:text-slate-300 bg-slate-200 dark:bg-slate-700">
@@ -62,7 +63,7 @@
             <!-- Header -->
             <header class="bg-white dark:bg-slate-800 shadow-md">
                 <div class="flex justify-between items-center p-4">
-                    <h2 class="text-xl font-semibold">Current Tasks</h2>
+                    <h2 class="text-lg">Current Tasks</h2>
                     <div class="flex items-center space-x-4">
                         <button id="darkModeToggle" class="p-1 rounded-md hover:bg-slate-200 dark:hover:bg-slate-700">
                             <i data-lucide="moon" class="w-5 h-5"></i>
@@ -89,19 +90,19 @@
             </div>
 
             <!-- Add new task -->
-            <div class="p-4 bg-white dark:bg-slate-800 shadow-md">
+            <div class="p-4 bg-slate-200 dark:bg-slate-700">
                 <div class="flex space-x-2">
-                    <input type="text" id="newTaskInput" placeholder="Add a new task" class="flex-1 p-2 text-sm border rounded-md dark:bg-slate-700 dark:border-slate-600">
-                    <button id="addTaskBtn" class="px-4 py-1 bg-sky-500 text-white text-sm rounded-md hover:bg-sky-600">Add Task</button>
+                    <input type="text" id="newTaskInput" placeholder="Add a new task" class="flex-1 p-2 text-sm border rounded-md bg-slate-100 dark:bg-slate-800 dark:border-slate-700">
+                    <button id="addTaskBtn" class="px-4 py-1 bg-sky-500 text-white text-xs border-none outline-none rounded-md hover:bg-sky-600">Add Task</button>
                 </div>
             </div>
             <!-- Completed and Postponed tasks -->
             <div class="flex justify-between p-4 bg-slate-200 dark:bg-slate-700">
-                <div id="completedTasks" class="w-1/2 p-4 bg-white dark:bg-slate-800 rounded-md shadow-md mr-2">
+                <div id="completedTasks" class="w-1/2 p-4 bg-white dark:bg-slate-800 rounded-md shadow-md mr-2 cursor-pointer">
                     <h3 class="text-lg font-semibold mb-2">Completed Tasks</h3>
                     <p class="text-2xl font-bold">0</p>
                 </div>
-                <div id="postponedTasks" class="w-1/2 p-4 bg-white dark:bg-slate-800 rounded-md shadow-md ml-2">
+                <div id="postponedTasks" class="w-1/2 p-4 bg-white dark:bg-slate-800 rounded-md shadow-md ml-2 cursor-pointer">
                     <h3 class="text-lg font-semibold mb-2">Postponed Tasks</h3>
                     <p class="text-2xl font-bold">0</p>
                 </div>
