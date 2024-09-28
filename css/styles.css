@@ -1,0 +1,44 @@
+      /* Добавим несколько дополнительных стилей */
+      .task-grid {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 1rem;
+      }
+
+      .task-card {
+        transition: all 0.3s ease;
+      }
+
+      .task-card.expanded {
+        grid-column: span 2;
+      }
+
+      .drag-handle {
+        cursor: move;
+      }
+
+      .task-time {
+        font-size: 2.5rem;
+        font-weight: 300;
+      }
+
+      .end-time {
+        font-size: 0.875rem;
+        color: var(--text-secondary);
+      }
+
+      #installPWA {
+        position: fixed;
+        bottom: 20px;
+        right: 20px;
+        padding: 10px 20px;
+        background-color: #0ea5e9;
+        color: white;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+      }
+
+      #installPWA.hidden {
+        display: none;
+      }
