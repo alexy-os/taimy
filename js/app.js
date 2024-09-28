@@ -2,7 +2,7 @@
 let tasks = JSON.parse(localStorage.getItem('tasks')) || [];
 let completedTasks = JSON.parse(localStorage.getItem('completedTasks')) || [];
 let postponedTasks = JSON.parse(localStorage.getItem('postponedTasks')) || [];
-tasks = tasks.filter(task => task && task.id);  // Фильтруем невалидные задачи
+tasks = tasks.filter(task => task && task.id);
 
 // DOM elements
 const taskList = document.getElementById('taskList');
@@ -11,7 +11,6 @@ if (!taskList) {
 }
 const newTaskInput = document.getElementById('newTaskInput');
 const addTaskBtn = document.getElementById('addTaskBtn');
-const darkModeToggle = document.getElementById('darkModeToggle');
 const menuToggle = document.getElementById('menuToggle');
 const dropdownMenu = document.getElementById('dropdownMenu');
 const exportJSON = document.getElementById('exportJSON');
@@ -105,11 +104,12 @@ function createTaskElement(task) {
     return taskEl;
 }
 
+
 // Function to update task list
 function updateTaskList() {
     taskList.innerHTML = '';
     tasks.forEach(task => {
-        if (task && task.id) {  // Добавляем проверку
+        if (task && task.id) {
             taskList.appendChild(createTaskElement(task));
         }
     });
@@ -210,10 +210,6 @@ newTaskInput.addEventListener('keypress', (e) => {
     if (e.key === 'Enter') addTask();
 });
 
-darkModeToggle.addEventListener('click', () => {
-    document.documentElement.classList.toggle('dark');
-});
-
 menuToggle.addEventListener('click', () => {
     dropdownMenu.classList.toggle('hidden');
 });
@@ -291,7 +287,6 @@ function toggleExpand(taskEl) {
 
     const expandBtn = taskEl.querySelector('.expandBtn');
     if (expandBtn) {
-        // Используем Unicode-символы для стрелок
         expandBtn.textContent = taskEl.classList.contains('expanded') ? '▲' : '▼';
     } else {
         console.error('Expand button not found');
@@ -391,7 +386,7 @@ updateTaskList();
 updateCompletedTasks();
 updatePostponedTasks();
 
-// Добавьте эту новую функцию для обновления времени задачи
+
 function updateTaskTime(id, newTime) {
     const task = tasks.find(t => t.id === id);
     if (task) {
@@ -412,17 +407,17 @@ function formatTimeInput(input) {
     input.value = `${minutes}:${seconds}`;
 }
 
-// Модальное окно
+// Modal window
 const taskModal = document.getElementById('taskModal');
 const modalTitle = document.getElementById('modalTitle');
 const modalTaskList = document.getElementById('modalTaskList');
 const closeModal = document.getElementById('closeModal');
 
-// Обработчики для открытия модального окна
+// Event listeners for opening the modal window
 document.getElementById('completedTasks').addEventListener('click', () => openTaskModal('completed'));
 document.getElementById('postponedTasks').addEventListener('click', () => openTaskModal('postponed'));
 
-// Функция для открытия модального окна
+// Function to open the modal window
 function openTaskModal(type) {
     const tasks = type === 'completed' ? completedTasks : postponedTasks;
     modalTitle.textContent = type === 'completed' ? 'Completed Tasks' : 'Postponed Tasks';
@@ -443,12 +438,12 @@ function openTaskModal(type) {
     taskModal.classList.remove('hidden');
 }
 
-// Обработчик для закрытия модального окна
+// Event listener for closing the modal window
 closeModal.addEventListener('click', () => {
     taskModal.classList.add('hidden');
 });
 
-// Обработчик для перезапуска задачи
+// Event listener for restarting a task
 modalTaskList.addEventListener('click', (e) => {
     if (e.target.classList.contains('restartTask')) {
         const taskId = parseInt(e.target.dataset.id);
@@ -456,7 +451,7 @@ modalTaskList.addEventListener('click', (e) => {
     }
 });
 
-// Функция для перезапуска задачи
+// Function to restart a task
 function restartTask(id) {
     let task;
     let sourceArray;
@@ -484,20 +479,20 @@ function restartTask(id) {
     }
 }
 
-// Функция для форматирования времени в часах и минутах
+// Function to format time in hours and minutes
 function formatTimeHoursMinutes(seconds) {
     const hours = Math.floor(seconds / 3600);
     const minutes = Math.floor((seconds % 3600) / 60);
     return `${hours}h ${minutes.toString().padStart(2, '0')}m`;
 }
 
-// Функция для сброса локального хранилища
+// Function to reset local storage
 function resetLocalStorage() {
     if (confirm('Are you sure you want to reset all data? This action cannot be undone.')) {
         localStorage.clear();
-        location.reload(); // Перезагружаем страницу для обновления данных
+        location.reload(); // Reload the page to update the data
     }
 }
 
-// Добавляем обработчик для кнопки сброса локального хранилища
+// Add event listener for the button to reset local storage
 document.getElementById('resetStorage').addEventListener('click', resetLocalStorage);

@@ -54,7 +54,7 @@ Taimy uses Tailwind CSS, making it easy to customize the appearance. Modify the 
 
 ## 🤝 Contributing
 
-Contributions, issues, and feature requests are welcome! Feel free to check the [issues page](https://github.com/yourusername/taimy/issues).
+Contributions, issues, and feature requests are welcome! Feel free to check the [issues page](https://github.com/alexy-os/taimy/issues).
 
 ## 📜 License
 

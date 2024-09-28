@@ -1,12 +1,4 @@
-// Функция для переключения темного режима
-function toggleDarkMode() {
-    document.documentElement.classList.toggle('dark');
-}
-
-// Обработчик для кнопки переключения темного режима
-document.getElementById('darkModeToggle').addEventListener('click', toggleDarkMode);
-
-// Функция для загрузки данных задач
+// Function to load task data
 function loadTasks() {
     const tasks = JSON.parse(localStorage.getItem('tasks')) || [];
     const completedTasks = JSON.parse(localStorage.getItem('completedTasks')) || [];
@@ -14,7 +6,7 @@ function loadTasks() {
     return { tasks, completedTasks, postponedTasks };
 }
 
-// Функция для обновления статистики
+// Function to update statistics
 function updateStats(tasks, completedTasks, postponedTasks) {
     const totalTasksElement = document.getElementById('totalTasks');
     const completedTasksElement = document.getElementById('completedTasks');
@@ -24,7 +16,7 @@ function updateStats(tasks, completedTasks, postponedTasks) {
     completedTasksElement.textContent = completedTasks.length;
 }
 
-// Функция для создания данных для диаграммы Ганта
+// Function to create data for Gantt chart
 function createGanttData(tasks, completedTasks, postponedTasks) {
     const allTasks = [...tasks, ...completedTasks, ...postponedTasks];
     return allTasks.map(task => {
@@ -43,14 +35,14 @@ function createGanttData(tasks, completedTasks, postponedTasks) {
             timeLog: task.timeLog || []
         };
 
-        // Сортируем изменения статуса по времени
+        // Sort status changes by time
         taskData.statusChanges.sort((a, b) => new Date(a.timestamp) - new Date(b.timestamp));
 
         return taskData;
     });
 }
 
-// Функция для создания диаграммы Ганта
+// Function to create Gantt chart
 function createGanttChart(tasks) {
     const ganttElement = document.getElementById('gantt');
     ganttElement.innerHTML = '';
@@ -85,9 +77,9 @@ function createGanttChart(tasks) {
         for (let i = 0; i < totalDays; i++) {
             const currentDate = new Date(earliestStart.getTime() + i * 24 * 60 * 60 * 1000);
             const cell = document.createElement('div');
-            cell.className = `w-8 h-4 cursor-pointer`; // Изменено на h-4
+            cell.className = `w-8 h-4 cursor-pointer`; // Changed to h-4
 
-            // Находим текущий статус для этой даты
+            // Find current status for this date
             const currentStatusChange = task.statusChanges.find(change => 
                 new Date(change.timestamp) <= currentDate && 
                 (!task.statusChanges[task.statusChanges.indexOf(change) + 1] || 
@@ -98,7 +90,7 @@ function createGanttChart(tasks) {
                 currentStatus = currentStatusChange.status;
             }
 
-            // Проверяем, была ли задача активна в этот день
+            // Check if the task was active on this day
             const wasActive = task.timeLog.some(log => 
                 new Date(log.timestamp).toDateString() === currentDate.toDateString() && 
                 log.action === 'start'
@@ -118,7 +110,7 @@ function createGanttChart(tasks) {
     });
 }
 
-// Функция для отображения деталей задачи
+// Function to display task details
 function showTaskDetails(task, date) {
     const popup = document.createElement('div');
     popup.className = 'fixed inset-0 bg-slate-900 bg-opacity-50 flex items-center justify-center';
@@ -153,17 +145,17 @@ function showTaskDetails(task, date) {
     });
 }
 
-// Функция для форматирования времени
+// Function to format time
 function formatTime(seconds) {
     if (typeof seconds !== 'number' || isNaN(seconds)) {
-        return '00:00';  // Возвращаем значение по умолчанию, если seconds некорректно
+        return '00:00';  // Return default value if seconds is incorrect
     }
     const minutes = Math.floor(seconds / 60);
     const remainingSeconds = seconds % 60;
     return `${minutes.toString().padStart(2, '0')}:${remainingSeconds.toString().padStart(2, '0')}`;
 }
 
-// Функция для форматирования времени в часах и минутах
+// Function to format time in hours and minutes
 function formatTimeHoursMinutes(seconds) {
     const hours = Math.floor(seconds / 3600);
     const minutes = Math.floor((seconds % 3600) / 60);
@@ -174,7 +166,7 @@ function formatTimeHoursMinutes(seconds) {
     }
 }
 
-// Функция для получения цвета в зависимости от статуса задачи
+// Function to get color based on task status
 function getStatusColor(status) {
     switch (status) {
         case 'created':
@@ -190,18 +182,18 @@ function getStatusColor(status) {
     }
 }
 
-// Функция для сброса локального хранилища
+// Function to reset local storage
 function resetLocalStorage() {
     if (confirm('Are you sure you want to reset all data? This action cannot be undone.')) {
         localStorage.clear();
-        location.reload(); // Перезагружаем страницу для обновления данных
+        location.reload(); // Reload the page to update the data
     }
 }
 
-// Объявляем ganttData как глобальную переменную
+// Declare ganttData as a global variable
 let ganttData = [];
 
-// Функция для создания мини-календаря
+// Function to create a mini calendar
 function createMiniCalendar(earliestDate, latestDate) {
     const calendarElement = document.getElementById('miniCalendar');
     calendarElement.className = 'flex items-center space-x-2 mb-4';
@@ -222,7 +214,7 @@ function createMiniCalendar(earliestDate, latestDate) {
     calendarElement.appendChild(nextButton);
     
     let currentStartDate = new Date(earliestDate);
-    let currentEndDate = new Date(currentStartDate.getTime() + 30 * 24 * 60 * 60 * 1000); // 31 день
+    let currentEndDate = new Date(currentStartDate.getTime() + 30 * 24 * 60 * 60 * 1000); // 31 days
     
     function updateDateRange() {
         dateRange.textContent = `${currentStartDate.toLocaleDateString()} - ${currentEndDate.toLocaleDateString()}`;
@@ -249,7 +241,7 @@ function createMiniCalendar(earliestDate, latestDate) {
     updateDateRange();
 }
 
-// Основная функция инициализации
+// Main initialization function
 function init() {
     const { tasks, completedTasks, postponedTasks } = loadTasks();
     updateStats(tasks, completedTasks, postponedTasks);
@@ -260,12 +252,9 @@ function init() {
     
     createMiniCalendar(earliestDate, latestDate);
     
-    // Обработчик для кнопки переключения темного режима
-    document.getElementById('darkModeToggle').addEventListener('click', toggleDarkMode);
-
-    // Обработчик для кнопки сброса локального хранилища
+    // Event listener for reset local storage button
     document.getElementById('resetStorage').addEventListener('click', resetLocalStorage);
 }
 
-// Вызов основной функции при загрузке страницы
+// Call the main initialization function when the page is loaded
 document.addEventListener('DOMContentLoaded', init);

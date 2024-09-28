@@ -1,0 +1,85 @@
+{
+  "active": [
+    {
+      "id": 1727507876271,
+      "name": "Development of REST API for interaction with WordPress",
+      "timeLeft": 21600,
+      "isRunning": false,
+      "status": "active",
+      "completedTime": 0,
+      "interval": 360,
+      "statusLog": [
+        {
+          "status": "active",
+          "timestamp": "2024-09-28T12:00:00.000000Z"
+        }
+      ]
+    },
+    {
+      "id": 1727506151503,
+      "name": "Creation of functionality for compiling Tailwind CSS",
+      "timeLeft": 14400,
+      "isRunning": false,
+      "status": "active",
+      "completedTime": 0,
+      "interval": 240,
+      "statusLog": [
+        {
+          "status": "active",
+          "timestamp": "2024-09-29T18:00:00.000000Z"
+        }
+      ]
+    }
+  ],
+  "completed": [
+    {
+      "id": 1727506277575,
+      "name": "Installation and setup of BunJS",
+      "timeLeft": 3600,
+      "isRunning": false,
+      "status": "completed",
+      "completedTime": 0,
+      "statusLog": [
+        {
+          "status": "completed",
+          "timestamp": "2024-09-28T09:00:00.000000Z"
+        }
+      ]
+    },
+    {
+      "id": 1727506274460,
+      "name": "Setting up LMDB database",
+      "timeLeft": 7200,
+      "isRunning": false,
+      "status": "completed",
+      "completedTime": 0,
+      "statusLog": [
+        {
+          "status": "completed",
+          "timestamp": "2024-09-28T10:00:00.000000Z"
+        }
+      ]
+    }
+  ],
+  "postponed": [
+    {
+      "id": 1727509029964,
+      "name": "Storage of WordPress page context",
+      "timeLeft": 14400,
+      "isRunning": false,
+      "status": "postponed",
+      "completedTime": 0,
+      "interval": 240,
+      "statusLog": [
+        {
+          "status": "active",
+          "timestamp": "2024-09-30T22:00:00.000000Z"
+        },
+        {
+          "status": "postponed",
+          "timestamp": "2024-09-28T12:48:48.558Z"
+        }
+      ]
+    }
+  ]
+}
