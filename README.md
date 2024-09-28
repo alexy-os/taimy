@@ -56,6 +56,17 @@ Taimy uses Tailwind CSS, making it easy to customize the appearance. Modify the 
 
 Contributions, issues, and feature requests are welcome! Feel free to check the [issues page](https://github.com/alexy-os/taimy/issues).
 
+## 💡 Philosophy 
+
+TaimY: AI-Powered Time Management with Freedom of Choice
+
+T -  Time
+AI - Artificial intelligence
+M -  Management
+Y -  Liberty solutions
+
+TaimY is an advanced task manager designed to revolutionize time management by leveraging the power of AI and the symbolism of the letter Y. The Y in the name represents freedom, flexibility, and decision-making—much like the crossroads we encounter when organizing our time. At the core of TaimY is the seamless integration of AI technology, providing intelligent assistance while allowing users to take control of their schedule.
+
 ## 📜 License
 
 This project is [MIT](https://choosealicense.com/licenses/mit/) licensed.
